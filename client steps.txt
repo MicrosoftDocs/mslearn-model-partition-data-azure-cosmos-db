@@ -1,0 +1,5 @@
+git clone https://github.com/GaryHopeMS/CosmicWorks
+cd CosmicWorks/
+bash init-sandbox.sh
+cd modeling
+dotnet run .
