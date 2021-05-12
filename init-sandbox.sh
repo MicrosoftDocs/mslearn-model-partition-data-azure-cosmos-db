@@ -3,7 +3,6 @@
 #Only for use for provisioning resources in an Azure subscription with one resource group
 
 resourceGroupName=$(az group list --query "[0].name" -o tsv)
-#resourceGroupName='mjbCosmicLabSandboxTest'
 deploymentName="CosmicLab-$RANDOM"
 
 az deployment group create \
@@ -25,14 +24,13 @@ key=$(az deployment group show \
 
 #key+=';'
 
-#delete appSettings.json
-rm -f "appSettings.json"
+#rm -f "appSettings.json"
 
 appSettings=$(cat << EOF 
 {
     "uri": "$uri", 
     "key": "$key",
-    "gitdatapath" : "https://api.github.com/repos/GaryHopeMS/CosmicWorks/contents/modeling/data/"
+    "gitdatapath" : "https://github.com/MicrosoftDocs/mslearn-cosmosdb-modules-central/tree/main/data/fullset"
 }
 EOF
 )

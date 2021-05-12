@@ -599,7 +599,7 @@ namespace modeling_demos
             
             Console.WriteLine("Starting Cosmos DB change feed processor");
 
-            processor.StartAsync();
+            await processor.StartAsync();
             Console.WriteLine("   change feed processor started!");
             return processor;
         }
