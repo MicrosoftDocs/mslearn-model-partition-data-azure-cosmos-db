@@ -24,13 +24,14 @@ key=$(az deployment group show \
 
 #key+=';'
 
-#rm -f "appSettings.json"
+rm -f "modeling/appSettings.json"
+rm -f "modeling-complete/appSettings.json"
 
 appSettings=$(cat << EOF 
 {
     "uri": "$uri", 
     "key": "$key",
-    "gitdatapath" : "https://github.com/MicrosoftDocs/mslearn-cosmosdb-modules-central/tree/main/data/fullset"
+    "gitdatapath" : "https://github.com/MicrosoftDocs/mslearn-cosmosdb-modules-central/tree/main/data/fullset/"
 }
 EOF
 )

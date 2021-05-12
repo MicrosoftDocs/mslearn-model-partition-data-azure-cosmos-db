@@ -23,8 +23,7 @@ namespace modeling_demos
         //Load secrets
         private static IConfigurationBuilder builder = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile(@"appSettings.json", optional: false, reloadOnChange: true)
-            .AddUserSecrets<Secrets>();
+            .AddJsonFile(@"appSettings.json", optional: false, reloadOnChange: true);
 
         private static IConfigurationRoot config = builder.Build();
 
