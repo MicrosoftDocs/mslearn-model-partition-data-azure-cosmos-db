@@ -30,7 +30,7 @@
     "resources": [
         {
             "type": "Microsoft.DocumentDB/databaseAccounts",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[parameters('accountName')]",
             "location": "[parameters('location')]",
             "kind": "GlobalDocumentDB",
@@ -50,7 +50,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v1')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('accountName'))]"
@@ -64,7 +64,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v2')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('accountName'))]"
@@ -78,7 +78,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v3')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('accountName'))]"
@@ -92,7 +92,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v4')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('accountName'))]"
@@ -106,7 +106,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v1/customer')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('accountName'), 'database-v1')]",
@@ -130,7 +130,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v1/customerAddress')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('accountName'), 'database-v1')]",
@@ -154,7 +154,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v1/customerPassword')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('accountName'), 'database-v1')]",
@@ -178,7 +178,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v1/product')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('accountName'), 'database-v1')]",
@@ -202,7 +202,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v1/productCategory')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('accountName'), 'database-v1')]",
@@ -226,7 +226,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v1/productTag')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('accountName'), 'database-v1')]",
@@ -250,7 +250,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v1/productTags')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('accountName'), 'database-v1')]",
@@ -274,7 +274,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v1/salesOrder')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('accountName'), 'database-v1')]",
@@ -298,7 +298,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v1/salesOrderDetail')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('accountName'), 'database-v1')]",
@@ -322,7 +322,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v2/customer')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('accountName'), 'database-v2')]",
@@ -346,7 +346,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v2/product')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('accountName'), 'database-v2')]",
@@ -370,7 +370,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v2/productCategory')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('accountName'), 'database-v2')]",
@@ -394,7 +394,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v2/productTag')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('accountName'), 'database-v2')]",
@@ -418,7 +418,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v2/salesOrder')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('accountName'), 'database-v2')]",
@@ -442,7 +442,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v3/customer')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('accountName'), 'database-v3')]",
@@ -466,7 +466,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v3/product')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('accountName'), 'database-v3')]",
@@ -490,7 +490,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v3/productCategory')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('accountName'), 'database-v3')]",
@@ -514,7 +514,7 @@
         },
                 {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v3/productTag')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('accountName'), 'database-v3')]",
@@ -538,7 +538,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v3/salesOrder')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('accountName'), 'database-v3')]",
@@ -562,7 +562,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v4/customer')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('accountName'), 'database-v4')]",
@@ -586,7 +586,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v4/product')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('accountName'), 'database-v4')]",
@@ -610,7 +610,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v4/productMeta')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('accountName'), 'database-v4')]",
@@ -634,7 +634,7 @@
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2021-04-15",
             "name": "[concat(parameters('accountName'), '/database-v4/salesByCategory')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('accountName'), 'database-v4')]",
@@ -664,7 +664,7 @@
         },
         "key": {
             "type": "string",
-            "value": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('accountName')), '2021-01-15').primaryMasterKey]"
+            "value": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('accountName')), '2021-04-15').primaryMasterKey]"
         }
     }
 }
