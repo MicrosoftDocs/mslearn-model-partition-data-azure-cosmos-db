@@ -31,7 +31,7 @@ appSettings=$(cat << EOF
 {
     "uri": "$uri", 
     "key": "$key",
-    "gitdatapath" : "https://github.com/MicrosoftDocs/mslearn-cosmosdb-modules-central/tree/main/data/fullset/"
+    "gitdatapath" : "https://api.github.com/repos/MicrosoftDocs/mslearn-cosmosdb-modules-central/contents/data/fullset/"
 }
 EOF
 )

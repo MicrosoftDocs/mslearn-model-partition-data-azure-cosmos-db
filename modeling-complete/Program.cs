@@ -57,7 +57,7 @@ namespace modeling_demos
                 Console.Clear();
                 Console.WriteLine($"Cosmos DB Modeling and Partitioning");
                 Console.WriteLine($"-----------------------------------------");
-                Console.WriteLine($"[a]   Start/Stop change feed processor");
+                Console.WriteLine($"[a]   Start change feed processor");
                 Console.WriteLine($"[b]   Update product category name");
                 Console.WriteLine($"-----------------------------------------");
                 Console.WriteLine($"[c]   Query for customer and all orders");
