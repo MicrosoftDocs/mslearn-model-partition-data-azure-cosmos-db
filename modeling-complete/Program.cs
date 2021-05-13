@@ -37,28 +37,95 @@ namespace modeling_demos
         {
 
             bool exit = false;
+
+            if (args.Length > 0 && args[0] == "load-data")
+            {
+                await GetFilesFromRepo("database-v1");
+                await GetFilesFromRepo("database-v2");
+                await GetFilesFromRepo("database-v3");
+                await GetFilesFromRepo("database-v4");
+                await LoadContainersFromFolder(client, "database-v1");
+                await LoadContainersFromFolder(client, "database-v2");
+                await LoadContainersFromFolder(client, "database-v3");
+                await LoadContainersFromFolder(client, "database-v4");
+
+                exit = true;
+            }
+
             while (exit == false)
             {
                 Console.Clear();
-                Console.WriteLine($"Cosmos DB Modeling and Partitioning Demos");
+                Console.WriteLine($"Cosmos DB Modeling and Partitioning");
+                Console.WriteLine($"-----------------------------------------");
+                Console.WriteLine($"[a]   Start/Stop change feed processor");
+                Console.WriteLine($"[b]   Update product category name");
+                Console.WriteLine($"-----------------------------------------");
+                Console.WriteLine($"[c]   Query for customer and all orders");
+                Console.WriteLine($"[d]   Create new order and update order total");
+                Console.WriteLine($"[e]   Delete order and update order total");
+                Console.WriteLine($"-----------------------------------------");
+                Console.WriteLine($"[o]   See other ecommerce operations ");
+                Console.WriteLine($"[x]   Exit");
+
+                ConsoleKeyInfo result = Console.ReadKey(true);
+
+                if (result.KeyChar == 'a')
+                {
+                    Console.Clear();
+                    await StartChangeFeedProcessor();
+                    Console.WriteLine("press any key to continue");
+                    var mykey = Console.ReadKey();
+                }
+                else if (result.KeyChar == 'b')
+                {
+                    Console.Clear();
+                    await QueryProductsForCategory();
+                    await UpdateProductCategory();
+                    await QueryProductsForCategory();
+                    await RevertProductCategory();
+                }
+                else if (result.KeyChar == 'c')
+                {
+                    Console.Clear();
+                    await QueryCustomerAndSalesOrdersByCustomerId();
+                }
+                else if (result.KeyChar == 'd')
+                {
+                    Console.Clear();
+                    await CreateNewOrderAndUpdateCustomerOrderTotal();
+                }
+                else if (result.KeyChar == 'e')
+                {
+                    Console.Clear();
+                    await DeleteOrder();
+                }
+                else if (result.KeyChar == 'o')
+                {
+                    Console.Clear();
+                    await BackMenu();
+                }
+                else if (result.KeyChar == 'x')
+                {
+                    exit = true;
+                }
+            }
+        }
+
+        public static async Task BackMenu()
+        {
+            bool exit = false;
+
+            while (exit == false)
+            {
+                Console.Clear();
+                Console.WriteLine($"Other E-Commerce Operations");
                 Console.WriteLine($"-----------------------------------------");
                 Console.WriteLine($"[a]   Query for single customer");
                 Console.WriteLine($"[b]   Point read for single customer");
                 Console.WriteLine($"[c]   List all product categories");
                 Console.WriteLine($"[d]   Query products by category id");
-                Console.WriteLine($"[e]   Update product category name");
-                Console.WriteLine($"[f]   Query orders by customer id");
-                Console.WriteLine($"[g]   Query for customer and all orders");
-                Console.WriteLine($"[h]   Create new order and update order total");
-                Console.WriteLine($"[i]   Delete order and update order total");
-                Console.WriteLine($"[j]   Query top 10 customers");
-                Console.WriteLine($"[k]   Start/Stop change feed processor");
                 Console.WriteLine($"-----------------------------------------");
-                Console.WriteLine($"[o]   Debug / status ");
-                Console.WriteLine($"[y]   Refresh source data");
-                Console.WriteLine($"[z]   Upload sample data");
-                Console.WriteLine($"-----------------------------------------");
-                Console.WriteLine($"[x]   Exit");
+                Console.WriteLine($"[x]   Return to Main Menu");
 
                 ConsoleKeyInfo result = Console.ReadKey(true);
 
@@ -82,46 +149,6 @@ namespace modeling_demos
                     Console.Clear();
                     await QueryProductsByCategoryId();
                 }
-                else if (result.KeyChar == 'e')
-                {
-                    Console.Clear();
-                    await QueryProductsForCategory();
-                    await UpdateProductCategory();
-                    await QueryProductsForCategory();
-                    await RevertProductCategory();
-                }
-                else if (result.KeyChar == 'f')
-                {
-                    Console.Clear();
-                    await QuerySalesOrdersByCustomerId();
-                }
-                else if (result.KeyChar == 'g')
-                {
-                    Console.Clear();
-                    await QueryCustomerAndSalesOrdersByCustomerId();
-                }
-                else if (result.KeyChar == 'h')
-                {
-                    Console.Clear();
-                    await CreateNewOrderAndUpdateCustomerOrderTotal();
-                }
-                else if (result.KeyChar == 'i')
-                {
-                    Console.Clear();
-                    await DeleteOrder();
-                }
-                else if (result.KeyChar == 'j')
-                {
-                    Console.Clear();
-                    await GetTop10Customers(); 
-                }
-                else if (result.KeyChar == 'k')
-                {
-                    Console.Clear();
-                    await StartChangeFeedProcessor();
-                    Console.WriteLine("press any key to continue");
-                    var mykey = Console.ReadKey();
-                }
                 else if (result.KeyChar == 'o')
                 {
                     Console.Clear();
@@ -131,7 +158,7 @@ namespace modeling_demos
                 }
                 else if (result.KeyChar == 'y')
                 {
-                   
+                    Console.Clear();
                     await GetFilesFromRepo("database-v1");
                     await GetFilesFromRepo("database-v2");
                     await GetFilesFromRepo("database-v3");
@@ -142,15 +169,13 @@ namespace modeling_demos
                 }
                 else if (result.KeyChar == 'z')
                 {
-                   
+                    Console.Clear();
                     await LoadContainersFromFolder(client, "database-v1");
                     await LoadContainersFromFolder(client, "database-v2");
                     await LoadContainersFromFolder(client, "database-v3");
                     await LoadContainersFromFolder(client, "database-v4");
-
                     Console.WriteLine("press any key to continue");
                     var mykey = Console.ReadKey();
-
                 }
                 else if (result.KeyChar == 'x')
                 {
