@@ -38,7 +38,7 @@ namespace modeling_demos
 
             bool exit = false;
 
-            if (args.Length > 0 && args[0] == "load-data")
+            if (args.Length > 0 && args[0] == "--load-data")
             {
                 await GetFilesFromRepo("database-v1");
                 await GetFilesFromRepo("database-v2");
@@ -624,7 +624,7 @@ namespace modeling_demos
             
             Console.WriteLine("Starting Cosmos DB change feed processor");
 
-            processor.StartAsync();
+            await processor.StartAsync();
             Console.WriteLine("   change feed processor started!");
             return processor;
         }
@@ -733,7 +733,7 @@ namespace modeling_demos
             {
                 downloadTask.Wait();
             }
-            catch (AggregateException ex)
+            catch 
             {
                 
             }

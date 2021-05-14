@@ -22,8 +22,6 @@ key=$(az deployment group show \
     --query "properties.outputs.key.value" \
     --output tsv)
 
-#key+=';'
-
 rm -f "modeling/appSettings.json"
 rm -f "modeling-complete/appSettings.json"
 
