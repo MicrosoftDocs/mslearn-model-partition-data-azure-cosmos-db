@@ -4,14 +4,11 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Cosmos;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using models;
 using Microsoft.Extensions.Configuration;
 using System.IO;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
+using models;
 
 
 
@@ -23,8 +20,7 @@ namespace modeling_demos
         //Load secrets
         private static IConfigurationBuilder builder = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile(@"appSettings.json", optional: false, reloadOnChange: true)
-            .AddUserSecrets<Secrets>();
+            .AddJsonFile(@"appSettings.json", optional: false, reloadOnChange: true);
 
         private static IConfigurationRoot config = builder.Build();
 
@@ -835,20 +831,5 @@ namespace modeling_demos
             }
         }
 
-    }
-
-    struct GitFileInfo
-    {
-        public String name;
-        public String type;
-        public long size;
-        public String download_url;
-    }
-
-
-    class Secrets
-    {
-        public string uri;
-        public string key;
     }
 }

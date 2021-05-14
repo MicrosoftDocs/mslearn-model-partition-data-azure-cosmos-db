@@ -835,19 +835,4 @@ namespace modeling_demos
         }
 
     }
-
-    struct GitFileInfo
-    {
-        public String name;
-        public String type;
-        public long size;
-        public String download_url;
-    }
-
-
-    class Secrets
-    {
-        public string uri;
-        public string key;
-    }
 }

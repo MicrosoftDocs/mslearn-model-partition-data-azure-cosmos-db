@@ -104,4 +104,13 @@ namespace models
         public string categoryName { get; set; }
         public int totalSales { get; set; }
     }
+
+
+    public class GitFileInfo
+    {
+        public string name;
+        public string type;
+        public long size;
+        public string download_url;
+    }
 }
