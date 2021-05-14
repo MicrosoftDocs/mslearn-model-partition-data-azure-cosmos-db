@@ -37,7 +37,7 @@ namespace modeling_demos
 
             bool exit = false;
 
-            if (args.Length > 0 && args[0] == "load-data")
+            if (args.Length > 0 && args[1] == "load-data")
             {
                 await GetFilesFromRepo("database-v1");
                 await GetFilesFromRepo("database-v2");
@@ -692,9 +692,6 @@ namespace modeling_demos
                     return;
             }
 
-
-
-
             String directoryJson = await response.Content.ReadAsStringAsync(); ;
 
             GitFileInfo[] dirContents = JsonConvert.DeserializeObject<GitFileInfo[]>(directoryJson);
@@ -732,7 +729,7 @@ namespace modeling_demos
             {
                 downloadTask.Wait();
             }
-            catch (AggregateException ex)
+            catch 
             {
                 
             }
@@ -842,12 +839,5 @@ namespace modeling_demos
         public String type;
         public long size;
         public String download_url;
-    }
-
-
-    class Secrets
-    {
-        public string uri;
-        public string key;
     }
 }

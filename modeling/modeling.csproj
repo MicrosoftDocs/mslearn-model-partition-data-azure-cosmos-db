@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>modeling_demos</RootNamespace>
+    <RootNamespace>Modeling</RootNamespace>
     <UserSecretsId>ec64f566-9cf9-45bc-92e4-95b00002eeb5</UserSecretsId>
   </PropertyGroup>
 
@@ -35,5 +35,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="https://json.schemastore.org/global.json" /></VisualStudio></ProjectExtensions>
 
 </Project>
