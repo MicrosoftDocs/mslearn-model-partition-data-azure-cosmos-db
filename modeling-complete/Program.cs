@@ -4,14 +4,11 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Cosmos;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using models;
 using Microsoft.Extensions.Configuration;
 using System.IO;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
+using models;
 
 
 
@@ -37,7 +34,7 @@ namespace modeling_demos
 
             bool exit = false;
 
-            if (args.Length > 0 && args[1] == "load-data")
+            if (args.Length > 0 && args[0] == "--load-data")
             {
                 await GetFilesFromRepo("database-v1");
                 await GetFilesFromRepo("database-v2");
@@ -623,9 +620,7 @@ namespace modeling_demos
             
             Console.WriteLine("Starting Cosmos DB change feed processor");
 
-#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-            processor.StartAsync();
-#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+            await processor.StartAsync();
             Console.WriteLine("   change feed processor started!");
             return processor;
         }
@@ -734,8 +729,8 @@ namespace modeling_demos
             {
                 downloadTask.Wait();
             }
-            catch            {
-                
+            catch
+            {              
             }
 
             if (downloadTask.Status == TaskStatus.Faulted)
@@ -835,12 +830,5 @@ namespace modeling_demos
             }
         }
 
-    }
-        struct GitFileInfo
-    {
-        public String name;
-        public String type;
-        public long size;
-        public String download_url;
     }
 }
