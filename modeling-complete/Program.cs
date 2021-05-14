@@ -836,8 +836,7 @@ namespace modeling_demos
         }
 
     }
-
-    struct GitFileInfo
+        struct GitFileInfo
     {
         public String name;
         public String type;

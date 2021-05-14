@@ -2,4 +2,5 @@ git clone https://github.com/MicrosoftDocs/mslearn-model-partition-data-azure-co
 cd mslearn-model-partition-data-azure-cosmos-db/
 bash init-sandbox.sh
 cd modeling
-dotnet run .
+	
+dotnet run . 
