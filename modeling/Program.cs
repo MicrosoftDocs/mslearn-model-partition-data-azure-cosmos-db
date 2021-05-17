@@ -109,7 +109,7 @@ namespace modeling_demos
                 }
             }
         }
-        
+
         public static async Task BackMenu()
         {
             bool exit = false;
@@ -604,8 +604,9 @@ namespace modeling_demos
                 .WithInstanceName("ChangeFeedProductCategories")
                 .WithLeaseContainer(leaseContainer)
                 .Build();
-            
+
             Console.WriteLine("Starting Cosmos DB change feed processor");
+
 
             await processor.StartAsync();
             Console.WriteLine("   change feed processor started!");
@@ -654,17 +655,18 @@ namespace modeling_demos
             HttpClient httpClient = new HttpClient();
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, url);
             request.Headers.Add("User-Agent", "cosmicworks-samples-client");
-                    
+
             if (!Directory.Exists(folder))
             {
                 Directory.CreateDirectory(folder);
             }
 
             HttpResponseMessage response = await httpClient.SendAsync(request);
-            if(!response.IsSuccessStatusCode) {  
+            if (!response.IsSuccessStatusCode)
+            {
                 Console.WriteLine("Error reading sample data from GitHub");
-                    Console.WriteLine($" - {url}");
-                    return;
+                Console.WriteLine($" - {url}");
+                return;
             }
 
 
@@ -709,7 +711,7 @@ namespace modeling_demos
             }
             catch
             {
-                
+
             }
 
             if (downloadTask.Status == TaskStatus.Faulted)
@@ -733,7 +735,7 @@ namespace modeling_demos
             List<Task> concurrentLoads = new List<Task>();
             foreach (string fileName in fileEntries)
             {
-                    var containerName = fileName.Split(Path.DirectorySeparatorChar)[2];
+                var containerName = fileName.Split(Path.DirectorySeparatorChar)[2];
                 Console.WriteLine($"    Container {containerName} from {fileName}");
                 try
                 {

@@ -4,6 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Modeling_Complete</RootNamespace>
+    <UserSecretsId>ec64f566-9cf9-45bc-92e4-95b00002eeb5</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,5 +26,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="https://json.schemastore.org/global.json" /></VisualStudio></ProjectExtensions>
 
 </Project>

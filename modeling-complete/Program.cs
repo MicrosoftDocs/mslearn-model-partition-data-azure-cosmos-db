@@ -729,9 +729,8 @@ namespace modeling_demos
             {
                 downloadTask.Wait();
             }
-            catch 
-            {
-                
+            catch
+            {              
             }
 
             if (downloadTask.Status == TaskStatus.Faulted)
