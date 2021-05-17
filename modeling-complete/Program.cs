@@ -186,7 +186,7 @@ namespace modeling_demos
             Database database = client.GetDatabase("database-v2");
             Container container = database.GetContainer("customer");
 
-            string customerId = "FFD0DD37-1F0E-4E2E-8FAC-EAF45B0E9447";
+            string customerId = "77A64329-1C2A-4BE4-867C-56B40962EC4E";
 
             //Get a customer with a query
             string sql = $"SELECT * FROM c WHERE c.id = @id";
@@ -220,7 +220,7 @@ namespace modeling_demos
             Database database = client.GetDatabase("database-v2");
             Container container = database.GetContainer("customer");
 
-            string customerId = "FFD0DD37-1F0E-4E2E-8FAC-EAF45B0E9447";
+            string customerId = "77A64329-1C2A-4BE4-867C-56B40962EC4E";
 
             Console.WriteLine("Point Read for a single customer\n");
 

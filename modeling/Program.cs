@@ -332,7 +332,7 @@ namespace modeling_demos
                     Console.WriteLine($"Product Count: {item.ProductCount}\nCategory: {item.categoryName}\n");
                 }
             }
-            Console.WriteLine("Press any key to continue...");
+            Console.WriteLine("Press any key to continue...\n");
             Console.ReadKey();
         }
 
@@ -357,7 +357,7 @@ namespace modeling_demos
                 id: categoryId,
                 item: updatedProductCategory);
 
-            Console.WriteLine("Category updated.\nPress any key to continue...");
+            Console.WriteLine("Category updated.\nPlease wait...\n");
             Console.ReadKey();
         }
 
@@ -380,7 +380,7 @@ namespace modeling_demos
                 id: categoryId,
                 item: updatedProductCategory);
 
-            Console.WriteLine("Press any key to continue...");
+            Console.WriteLine("Category updated.\nPlease wait...\n");
             Console.ReadKey();
         }
 
@@ -388,7 +388,7 @@ namespace modeling_demos
         {
             Database database = client.GetDatabase("database-v4");
             Container container = database.GetContainer("customer");
-
+            
             string customerId = "FFD0DD37-1F0E-4E2E-8FAC-EAF45B0E9447";
 
             string sql = "SELECT * from c WHERE c.type = 'salesOrder' and c.customerId = @customerId";
@@ -469,16 +469,16 @@ namespace modeling_demos
             Database database = client.GetDatabase("database-v4");
             Container container = database.GetContainer("customer");
 
-            //Get the customer
             string customerId = "FFD0DD37-1F0E-4E2E-8FAC-EAF45B0E9447";
+            //Get the customer
             ItemResponse<CustomerV4> response = await container.ReadItemAsync<CustomerV4>(
                 id: customerId,
                 partitionKey: new PartitionKey(customerId)
                 );
             CustomerV4 customer = response.Resource;
 
-            //Increment the salesOrderTotal property
-            customer.salesOrderCount++;
+            //To-Do: Write code to increment salesorderCount
+
 
             //Create a new order
             string orderId = "5350ce31-ea50-4df9-9a48-faff97675ac5"; //Normally would use Guid.NewGuid().ToString()
@@ -509,15 +509,9 @@ namespace modeling_demos
                 }
             };
 
-            //Submit both as a transactional batch
-            TransactionalBatchResponse txBatchResponse = await container.CreateTransactionalBatch(
-                new PartitionKey(salesOrder.customerId))
-                .CreateItem<SalesOrder>(salesOrder)
-                .ReplaceItem<CustomerV4>(customer.id, customer)
-                .ExecuteAsync();
-
-            if (txBatchResponse.IsSuccessStatusCode)
-                Console.WriteLine("Order created successfully");
+            //To-Do: Write code to insert the new order and update the customer as a transaction
+            
+            
 
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
@@ -587,10 +581,10 @@ namespace modeling_demos
         static async Task<ChangeFeedProcessor> StartChangeFeedProcessor()
         {
             Console.WriteLine("Building Cosmos DB change feed processor");
-            CosmosClient _client = new CosmosClient(uri, key);
-            Database database = _client.GetDatabase("database-v3");
-            Container productCategoryContainer = database.GetContainer("productCategory");
-            Container productContainer = database.GetContainer("product");
+            //CosmosClient _client = new CosmosClient(uri, key);
+            Database database = client.GetDatabase("database-v3");
+            Container productCategoryContainer = database.GetContainer("{container to watch}");
+            Container productContainer = database.GetContainer("{container to update}");
 
             ContainerProperties leaseContainerProperties = new ContainerProperties("consoleLeases", "/id");
             Container leaseContainer = await database.CreateContainerIfNotExistsAsync(leaseContainerProperties, throughput: 400);
@@ -602,18 +596,8 @@ namespace modeling_demos
                     Console.WriteLine(" + Change Feed Processor -> " + input.Count + " Change(s) Received");
                     Console.ForegroundColor = ConsoleColor.White;
 
-                    List<Task> tasks = new List<Task>();
+                    //To-Do: Write code to capture changed product categories
 
-                    //Fetch each change to productCategory container
-                    foreach (ProductCategory item in input)
-                    {
-                        string categoryId = item.id;
-                        string categoryName = item.name;
-
-                        tasks.Add(UpdateProductCategoryName(productContainer, categoryId, categoryName));
-                    }
-
-                    await Task.WhenAll(tasks);
                 });
 
             var processor = builder
@@ -647,22 +631,13 @@ namespace modeling_demos
             {
                 FeedResponse<Product> response = await resultSet.ReadNextAsync();
 
-                //Loop through all products
-                foreach (Product product in response)
-                {
-                    productCount++;
-                    //update category name for product
-                    product.categoryName = categoryName;
+                //To-Do: Write code to update the product container
 
-                    //write the update back to product container
-                    await productContainer.ReplaceItemAsync(
-                        partitionKey: new PartitionKey(categoryId),
-                        id: product.id,
-                        item: product);
-                }
+
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine($" + Change Feed Processor ->> Updated {productCount} products with updated category name '{categoryName}'");
                 Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("Press any key to continue...\n");
             }
         }
 
