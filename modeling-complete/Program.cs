@@ -12,7 +12,7 @@ using models;
 
 
 
-namespace modeling_demos
+namespace modeling
 {
     class Program
     {
@@ -58,7 +58,8 @@ namespace modeling_demos
                 Console.WriteLine($"-----------------------------------------");
                 Console.WriteLine($"[c]   Query for customer and all orders");
                 Console.WriteLine($"[d]   Create new order and update order total");
-                Console.WriteLine($"[e]   Delete order and update order total");
+                Console.WriteLine($"[e]   Query top 10 customers");
+                Console.WriteLine($"[f]   Delete order and update order total");
                 Console.WriteLine($"-----------------------------------------");
                 Console.WriteLine($"[o]   See other ecommerce operations ");
                 Console.WriteLine($"[x]   Exit");
@@ -91,6 +92,11 @@ namespace modeling_demos
                     await CreateNewOrderAndUpdateCustomerOrderTotal();
                 }
                 else if (result.KeyChar == 'e')
+                {
+                    Console.Clear();
+                    await GetTop10Customers();
+                }
+                else if (result.KeyChar == 'f')
                 {
                     Console.Clear();
                     await DeleteOrder();
