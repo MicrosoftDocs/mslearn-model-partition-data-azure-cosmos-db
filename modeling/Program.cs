@@ -456,7 +456,12 @@ namespace modeling
                 }
             }
 
-            Console.WriteLine("Print out customer record and all their orders\n");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("\nPrint out customer record and all their orders");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("------------------------------------------------\n");
+            Console.ForegroundColor = ConsoleColor.White;
+
             Print(customer);
             foreach (SalesOrder order in orders)
             {
@@ -584,7 +589,6 @@ namespace modeling
         static async Task<ChangeFeedProcessor> StartChangeFeedProcessor()
         {
             Console.WriteLine("Building Cosmos DB change feed processor");
-            //CosmosClient _client = new CosmosClient(uri, key);
             Database database = client.GetDatabase("database-v3");
             Container productCategoryContainer = database.GetContainer("{container to watch}");
             Container productContainer = database.GetContainer("{container to update}");
@@ -599,8 +603,12 @@ namespace modeling
                     Console.WriteLine(" + Change Feed Processor -> " + input.Count + " Change(s) Received");
                     Console.ForegroundColor = ConsoleColor.White;
 
+                    List<Task> tasks = new List<Task>();
+
                     //To-Do: Write code to capture changed product categories
 
+
+                    await Task.WhenAll(tasks);
                 });
 
             var processor = builder

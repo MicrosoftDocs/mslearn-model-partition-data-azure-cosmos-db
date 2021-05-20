@@ -590,8 +590,7 @@ namespace modeling
         static async Task<ChangeFeedProcessor> StartChangeFeedProcessor()
         {
             Console.WriteLine("Building Cosmos DB change feed processor");
-            CosmosClient _client = new CosmosClient(uri, key);
-            Database database = _client.GetDatabase("database-v3");
+            Database database = client.GetDatabase("database-v3");
             Container productCategoryContainer = database.GetContainer("productCategory");
             Container productContainer = database.GetContainer("product");
 
